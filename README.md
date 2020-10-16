@@ -1,5 +1,6 @@
 # Checkd - A task planner app
 > Checkd was created using HTML, CSS, Bootstrap, JavaScript and Jasmine
+You can test out the app at https://checkd-app.netlify.app/
 
 # Design goals
 * Dark mode interface to reduce user eye strain
@@ -17,11 +18,10 @@
 *This app is still a work in progress!*
 
 # Future features
-* Add in buttons for other status'
 * Tasks should move to appropriate accordion
 * Accordion which are not in use should be hidden
 * Filter tasks by user
 * Search feature
-* Edit button
+* Edit existing tasks
 * Switch for light mode
 * Create a mobile app version
