@@ -9,6 +9,10 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <!-- Google font API -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+     <!-- Font Awesome Icon CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../CSS/style.css"/>
     <title>Task Planner</title>
   </head>
@@ -43,10 +47,11 @@
         </ul>
       </div>
     </nav>
-    <!-- Accordion -->
+    <!-- accordion -->
     <div id="task-body">
       <div id="accordion">
         <div class="container">
+          <!-- card one -->
           <div class="row">
             <div class="col">
               <div class="card">
@@ -88,6 +93,8 @@
               </div>
             </div>
           </div>
+                   <!-- card one -->
+                            <!-- card two -->
           <div class="row">
             <div class="col">
               <div class="card">
@@ -129,6 +136,8 @@
               </div>
             </div>
           </div>
+                   <!-- card two -->
+                            <!-- card three -->
           <div class="row">
             <div class="col">
               <div class="card">
@@ -170,10 +179,13 @@
               </div>
             </div>
           </div>
+                   <!-- card one -->
+                      <!-- accordion -->
     <div class="task-button">
       <button type="button" class="btn btn-dark btn-lg btn-block" data-toggle="modal" data-target="#myModal">
         Create New Task
       </button>
+                  <!-- modal form -->
       <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -209,7 +221,6 @@
                     Please enter at least 15 characters
                   </div>
                 </div>
-                <!-- due date -->
                 <div class= "form-box">
                 <div class="row due-date">
                   <div class="text-light date-picker">
@@ -218,7 +229,6 @@
                   </div>
                 </div>
               </div>
-              <!-- due date -->
                 <div class="form-box">
                   <input
                     type="text"
@@ -237,6 +247,9 @@
                       Task Status
                     </option>
                     <option>To do</option>
+                    <option>In Progress</option>
+                    <option>For Review</option>
+                    <option>Done</option>
                   </select>
                 </div>
             </div>
@@ -249,6 +262,7 @@
         </div>
       </div>
     </form>
+                <!-- modal form -->
     </div>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
