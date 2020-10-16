@@ -1,7 +1,13 @@
-// Initialize a new TaskManager with currentId set to 0
+// initialize a new TaskManager with currentId set to 0
 const taskManager = new TaskManager(0);
 
-// Select the New Task Form
+// load tasks to page
+taskManager.load();
+
+// render tasks to page
+taskManager.render();
+
+// select the new task form
 const formValidate = document.querySelector(".form-validate1");
 
 // variables for form fields
@@ -12,18 +18,24 @@ const formDueDate = document.querySelector("#dueDate");
 const formStatus = document.querySelector("#taskStatus");
 
 // variables for object
-let completedForm = { name: "", description: "", assignee: "", dueDate: "", status: ""};
+let completedForm = {
+  name: "",
+  description: "",
+  assignee: "",
+  dueDate: "",
+  status: "",
+};
 
 // event listener for click on submit button
 formValidate.addEventListener("submit", (event) => {
-  // Prevent default action
+  // prevent default action firing
   event.preventDefault();
-  
-  // AssignedTo -> Not Empty and longer than 8 characters
+
+  // assigned to field -> not empty and longer than 8 characters
   if (formAssignee.value.length >= 8) {
     formAssignee.classList.add("is-valid");
     formAssignee.classList.remove("is-invalid");
-    // store input value into variable - Assignee -> String
+    // store input value into variable - assignee -> string
     completedForm.assignee = formAssignee.value;
     // error message for incorrect input
   } else {
@@ -31,11 +43,11 @@ formValidate.addEventListener("submit", (event) => {
     formAssignee.classList.remove("is-valid");
   }
 
-  // Description -> Not Empty and longer than 15 characters
+  // description field -> not empty and longer than 15 characters
   if (formTaskDescription.value.length >= 15) {
     formTaskDescription.classList.add("is-valid");
     formTaskDescription.classList.remove("is-invalid");
-    // store input value into variable - Description -> String
+    // store input value into variable - description -> string
     completedForm.description = formTaskDescription.value;
     // error message for incorrect input
   } else {
@@ -43,11 +55,11 @@ formValidate.addEventListener("submit", (event) => {
     formTaskDescription.classList.remove("is-valid");
   }
 
-  // Name -> Not Empty and longer than 8 characters
+  // name field -> not empty and longer than 8 characters
   if (formTaskName.value.length >= 8) {
     formTaskName.classList.add("is-valid");
     formTaskName.classList.remove("is-invalid");
-    // store input value into variable - Name -> String
+    // store input value into variable - name -> string
     completedForm.name = formTaskName.value;
     // error message for incorrect input
   } else {
@@ -58,14 +70,14 @@ formValidate.addEventListener("submit", (event) => {
   // set min date as today
   let today = new Date();
   let dd = today.getDate();
-  let mm = today.getMonth()+1;
+  let mm = today.getMonth() + 1;
   let yyyy = today.getFullYear();
-  if(dd<10){
-          dd='0'+dd
-      } 
-      if(mm<10){
-          mm='0'+mm
-      } 
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
 
   today.setUTCHours(0, 0, 0, 0);
 
@@ -76,11 +88,11 @@ formValidate.addEventListener("submit", (event) => {
     formDueDate.classList.add("is-valid");
     formDueDate.classList.remove("is-invalid");
   }
-  
-  // store input value into variable - status -> String
+
+  // store input value into variable - status -> string
   completedForm.status = formStatus.value;
 
-  // Add the task to the task manager
+  // add task to the task manager
   taskManager.addTask(
     completedForm.name,
     completedForm.description,
@@ -88,25 +100,32 @@ formValidate.addEventListener("submit", (event) => {
     completedForm.dueDate,
     completedForm.status
   );
-
-  // render the tasks
+  // call taskmanager save method
+  taskManager.save();
+  // render task
   taskManager.render();
 
-// Form reset
+  // form reset
   formReset = () => {
     formValidate.reset();
-    completedForm = { name: "", description: "", assignee: "", dueDate: "", status: ""};
+    completedForm = {
+      name: "",
+      description: "",
+      assignee: "",
+      dueDate: "",
+      status: "",
+    };
   };
-  formReset()
-  // Clear the bootstrap validation ready for next inputs
-  formAssignee.classList.remove('is-valid');
-  formTaskDescription.classList.remove('is-valid');
-  formTaskName.classList.remove('is-valid');
-  formDueDate.classList.remove('is-valid');
-  formStatus.classList.remove('is-valid');
-  // Close the modal by toggling
-  $('#myModal').modal('toggle')
-  $('#collapseOne').collapse('toggle');
+  formReset();
+  // clear the bootstrap validation ready for next inputs
+  formAssignee.classList.remove("is-valid");
+  formTaskDescription.classList.remove("is-valid");
+  formTaskName.classList.remove("is-valid");
+  formDueDate.classList.remove("is-valid");
+  formStatus.classList.remove("is-valid");
+  // close the modal by toggling
+  $("#myModal").modal("toggle");
+  $("#collapseOne").collapse("toggle");
 });
 
 // select the task list and store as variable
@@ -123,24 +142,6 @@ tasksList.addEventListener("click", (event) => {
     const task = taskManager.getTaskById(taskId);
     // update the task status to 'Done'
     task.status = "DONE";
-<<<<<<< Updated upstream
-||||||| constructed merge base
-    // call taskmanager save method
-    taskManager.save();
-    taskManager.render();
-  }
-  // check if delete button was clicked
-  if (event.target.classList.contains("delete-button")) {
-    // get parent task
-    const parentTask = event.target.parentElement;
-    // get taskId of parent task
-    const taskId = Number(parentTask.dataset.taskId);
-    // delete the task
-    taskManager.deleteTask(taskId);
-    // save the task to localStorage
-    taskManager.save();
-    // render tasks
-=======
     // save the task to localStorage
     taskManager.save();
     // render tasks
@@ -152,18 +153,13 @@ tasksList.addEventListener("click", (event) => {
     const parentTask = event.target.parentElement;
     // get taskId of parent task
     const taskId = Number(parentTask.dataset.taskId);
+
     // get task from the TaskManager using taskId
     taskManager.deleteTask(taskId);
     // save the task to localStorage
     taskManager.save();
     // render tasks
->>>>>>> Stashed changes
     taskManager.render();
-<<<<<<< Updated upstream
-  } 
-||||||| constructed merge base
-  }
-=======
   }
   // check if review button was clicked
   if (event.target.classList.contains("review-button")) {
@@ -195,5 +191,4 @@ tasksList.addEventListener("click", (event) => {
     // render tasks
     taskManager.render();
   }
->>>>>>> Stashed changes
 });
