@@ -140,11 +140,11 @@ tasksList.addEventListener("click", (event) => {
     const taskId = Number(parentTask.dataset.taskId);
     // get task from the TaskManager using taskId
     const task = taskManager.getTaskById(taskId);
-    // update the task status to 'Done'
+    // update status to done
     task.status = "DONE";
-
-    // call taskmanager save method
+    // save the task to localStorage
     taskManager.save();
+    // render tasks
     taskManager.render();
   }
   // check if delete button was clicked
@@ -158,39 +158,17 @@ tasksList.addEventListener("click", (event) => {
     // save the task to localStorage
     taskManager.save();
     // render tasks
-    // save the task to localStorage
-    taskManager.save();
-    // render tasks
     taskManager.render();
   }
-  // check if delete button was clicked
-  if (event.target.classList.contains("delete-button")) {
+  // check if review button was clicked
+  if (event.target.classList.contains("review-button")) {
     // get parent task
     const parentTask = event.target.parentElement;
     // get taskId of parent task
     const taskId = Number(parentTask.dataset.taskId);
     // get task from the TaskManager using taskId
-    taskManager.deleteTask(taskId);
-    // save the task to localStorage
-    taskManager.save();
-    // render tasks
-
-    taskManager.render();
-
-  } 
-
-  }
-
-  }
-  // check if review button was clicked
-  if (event.target.classList.contains("review-button")) {
-    // get the parent task
-    const parentTask = event.target.parentElement;
-    // get the taskId of the parent task
-    const taskId = Number(parentTask.dataset.taskId);
-    // get task from the TaskManager using taskId
     const task = taskManager.getTaskById(taskId);
-    // update the task status to 'For Review'
+    // update status to "for review"
     task.status = "For Review";
     // save the task to localStorage
     taskManager.save();
@@ -199,36 +177,17 @@ tasksList.addEventListener("click", (event) => {
   }
   // check if progress button was clicked
   if (event.target.classList.contains("progress-button")) {
-    // get the parent Task
+    // get parent task
     const parentTask = event.target.parentElement;
-    // get the taskId of the parent task
+    // get taskId of parent task
     const taskId = Number(parentTask.dataset.taskId);
     // get task from the TaskManager using taskId
     const task = taskManager.getTaskById(taskId);
-    // update the task status to 'In Progress'
+    // update status to "in progress"
     task.status = "In Progress";
     // save the task to localStorage
     taskManager.save();
     // render tasks
     taskManager.render();
   }
-
-    // call taskmanager save method
-    taskManager.save();
-    taskManager.render();
-  }
-  // check if delete button was clicked
-  if (event.target.classList.contains("delete-button")) {
-    // get parent task
-    const parentTask = event.target.parentElement;
-    // get taskId of parent task
-    const taskId = Number(parentTask.dataset.taskId);
-    // delete the task
-    taskManager.deleteTask(taskId);
-    // save the task to localStorage
-    taskManager.save();
-    // render tasks
-    taskManager.render();
-  }
-
 });
