@@ -1,5 +1,6 @@
 # Checkd - A task planner app
 > Checkd was created using HTML, CSS, Bootstrap, JavaScript and Jasmine
+
 You can test out the app at https://checkd-app.netlify.app/
 
 # Design goals
